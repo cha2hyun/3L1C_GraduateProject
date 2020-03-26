@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}create{% endblock %}
+
+{% block content %}
+
+<h2>Before you edit, Please Fill this form</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <button type="submit" name="save" value="save" class="btn btn-success">Save</button>
+    <button type="submit" name="create" value="create" class="btn btn-success">Create</button>
+</form>
+
+
+{% endblock %}

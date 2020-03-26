@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Update{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 panel panel-default">
+        <form action="" method="post" enctype="multipart/form-data">
+            {{form.as_p}}
+            {% csrf_token %}
+            <button type="submit" name="save" value="save" class="btn btn-success">Save</button>
+            <button type="submit" name="create" value="create" class="btn btn-success">Create</button>
+        </form>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}{{Project_Name}}{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+{% for theme in theme_view %}
+<h4>
+    <a href="{% url 'product:detail' Project_Name=Project_Name pk=theme.id %}"> {{theme.title}}</a>
+</h4>
+{% endfor %}
+<a href="{% url 'product:upload' Project_Name=Project_Name %}" class="btn btn-xs btn-success">업로드</a>
+<a href="{% url 'product:logout' Project_Name=Project_Name %}" class="btn btn-xs btn-success">Logout</a>
+{% else %}
+<a href="{% url 'product:login' Project_Name=Project_Name %}" class="btn btn-xs btn-success">Login</a>
+{% endif %}
+
+{% endblock %}

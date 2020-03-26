@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Signup{% endblock %}
+
+{% block content %}
+<div class="alert alert-info">
+    Please enter your account informations.
+</div>
+<form action="" method="post">
+    {{form.as_p}}
+    {% csrf_token %}
+    <input type="submit" class="btn btn-primary" value="Register">
+</form>
+{% endblock %}

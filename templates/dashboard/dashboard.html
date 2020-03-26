@@ -3,23 +3,75 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
+저장
 {% for th4 in th4 %}
-{% if user.id == th4.user_id %}
+{% if th4.Saved == '1' %}
 <h1>
     <p>
-        <a href="{% url 'company:login' th4.Project_Name %}">{{ th4.Project_Name }}</a>
+        <a href="{% url 'dashboard:update' pk=th4.id %}">{{ th4.Project_Name }}</a>
+        <a href="{% url 'dashboard:delete' pk=th4.id %}">
+            <font size="1">
+                삭제
+        </a></font>
     </p>
 </h1>
 {% endif %}
 {% endfor %}
+<p>
+    완료
+</p>d
+<p>물건 중개</p>
+{% for th4 in th4 %}
+{% if th4.Saved != '1' %}
+{% if th4.Category == 'product' %}
 
-<a href="{% url 'company:create' %}" class="btn btn-xs btn-success">사이트 생성</a>
-<p class="text-right">
-    <a href="{% url 'account:logout' %}" class="btn btn-xs btn-success">Logout</a>
-</p>
-{% else %}
-<a href="{% url 'account:login' %}" class="btn btn-xs btn-success">Login</a>
+<h1>
+    <p>
+        <a href="{% url 'product:login' th4.Project_Name %}">{{ th4.Project_Name }}</a>
+        <a href="{% url 'dashboard:delete' pk=th4.id %}">
+            <font size="1">
+                삭제
+        </a></font>
+    </p>
+</h1>
 {% endif %}
+{% endif %}
+{% endfor %}
+<p>사람 중개</p>
+{% for th4 in th4 %}
+{% if th4.Saved != '1' %}
+{% if th4.Category == 'person' %}
+
+<h1>
+    <p>
+        <a href="">{{ th4.Project_Name }}</a>
+        <a href="{% url 'dashboard:delete' pk=th4.id %}">
+            <font size="1">
+                삭제
+        </a></font>
+    </p>
+</h1>
+{% endif %}
+{% endif %}
+{% endfor %}
+<p>장소 중개</p>
+{% for th4 in th4 %}
+{% if th4.Saved != '1' %}
+{% if th4.Category == 'place' %}
+
+<h1>
+    <p>
+        <a href="">{{ th4.Project_Name }}</a>
+        <a href="{% url 'dashboard:delete' pk=th4.id %}">
+            <font size="1">
+                삭제
+        </a></font>
+    </p>
+</h1>
+{% endif %}
+{% endif %}
+{% endfor %}
+<p></p>
+<a href="{% url 'dashboard:create' %}" class="btn btn-xs btn-success">사이트 생성</a>
 
 {% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}{{detail_a.text}}{% endblock %}
+
+{% block content %}
+{% for d in detail_a %}
+{% if d.photo %}
+<p>물건 사진<img src="{{d.photo.url}}" style="width: 10%;"></p>
+{% endif %}
+<p>
+    제목: {{d.title}}
+</p>
+<p>
+    위치: {{d.location}}
+</p>
+<p>
+    가격: {{d.price}}
+</p>
+
+<p>
+    거래방법: {{d.howtotrade}}
+</p>
+
+{% if  user.id == d.user_id %}
+<a href="{% url 'product:update' Project_Name=Project_Name pk=d.id %}" class="btn btn-outline-danger btn-sm">update</a>
+<a href="{% url 'product:delete' Project_Name=Project_Name pk=d.id %}" class="btn btn-outline-danger btn-sm">delete</a>
+{% endif %}
+{% endfor %}
+
+{% endblock %}
