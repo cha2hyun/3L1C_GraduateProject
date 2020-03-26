@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}{{detail_a.text}}{% endblock %}
+
+{% block content %}
+{% for d in detail_a %}
+<p>
+    {{d.text}}
+</p>
+{% if  user.id == d.user_id %}
+<a href="{% url 'company:update' Project_Name=Project_Name pk=d.id %}" class="btn btn-outline-danger btn-sm">update</a>
+<a href="{% url 'company:delete' Project_Name=Project_Name pk=d.id %}" class="btn btn-outline-danger btn-sm">delete</a>
+{% endif %}
+{% endfor %}
+
+{% endblock %}
