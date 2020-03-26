@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+{% for th4 in th4 %}
+{% if user.id == th4.user_id %}
+<h1>
+    <p>
+        <a href="{% url 'company:login' th4.Project_Name %}">{{ th4.Project_Name }}</a>
+    </p>
+</h1>
+{% endif %}
+{% endfor %}
+
+<a href="{% url 'company:create' %}" class="btn btn-xs btn-success">사이트 생성</a>
+<p class="text-right">
+    <a href="{% url 'account:logout' %}" class="btn btn-xs btn-success">Logout</a>
+</p>
+{% else %}
+<a href="{% url 'account:login' %}" class="btn btn-xs btn-success">Login</a>
+{% endif %}
+
+{% endblock %}

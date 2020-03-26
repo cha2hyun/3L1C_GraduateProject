@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}create{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<h2>Before you edit, Please Fill this form</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <button type="submit" class="btn btn-success">Save</button>
+</form>
+{% else %}
+<h2>Please, <br> <a href="{% url 'account:signin' %}">LogIn</a> to
+    create your Theme</h2>
+{% endif %}
+
+{% endblock %}
